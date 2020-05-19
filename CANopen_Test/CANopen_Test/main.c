@@ -33,6 +33,7 @@
 
 #include <atmel_start.h>
 #include "task.h"
+#include "main.h"
 /**
  * \brief display configuration menu.
  */

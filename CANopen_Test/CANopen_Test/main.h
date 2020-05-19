@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : CAN.h
-  * Description        : This file provides code for the configuration
-  *                      of the CAN instances.
+  * @file           : main.h
+  * @brief          : Header for main.c file.
+  *                   This file contains the common defines of the application.
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -36,46 +36,55 @@
   *
   ******************************************************************************
   */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __can_H
-#define __can_H
-#ifdef __cplusplus
- extern "C" {
-#endif
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l4xx_hal.h"
-#include "main.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
-extern CAN_HandleTypeDef hcan1;
+/* Private define ------------------------------------------------------------*/
+/*
+#define IO_LINK_EN_Pin GPIO_PIN_5
+#define IO_LINK_EN_GPIO_Port GPIOA
+#define IO_LINK_WAKE_Pin GPIO_PIN_6
+#define IO_LINK_WAKE_GPIO_Port GPIOA
+#define IOLINK_PWR_OK_Pin GPIO_PIN_7
+#define IOLINK_PWR_OK_GPIO_Port GPIOA
+#define EEP_SS_Pin GPIO_PIN_1
+#define EEP_SS_GPIO_Port GPIOB
+#define IO_LINK_CT_OK_Pin GPIO_PIN_8
+#define IO_LINK_CT_OK_GPIO_Port GPIOA
+#define IO_LINK_TX_Pin GPIO_PIN_9
+#define IO_LINK_TX_GPIO_Port GPIOA
+#define IO_LINK_RX_Pin GPIO_PIN_10
+#define IO_LINK_RX_GPIO_Port GPIOA
+*/
+/* ########################## Assert Selection ############################## */
+/**
+  * @brief Uncomment the line below to expanse the "assert_param" macro in the 
+  *        HAL drivers code
+  */
+/* #define USE_FULL_ASSERT    1U */
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-extern void _Error_Handler(char *, int);
+#ifdef __cplusplus
+ extern "C" {
+#endif
+void _Error_Handler(char *, int);
 
-void MX_CAN1_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
-
+#define Error_Handler() _Error_Handler(__FILE__, __LINE__)
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ can_H */
 
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
+#endif /* __MAIN_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

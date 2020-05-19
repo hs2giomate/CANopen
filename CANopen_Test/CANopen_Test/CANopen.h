@@ -74,7 +74,7 @@ extern "C" {
  * version 2 with the classpath exception.
  */
 
-
+	#include "driver_init.h"
     #include "CO_driver.h"
     #include "CO_OD.h"
     #include "CO_SDO.h"
@@ -185,7 +185,7 @@ CO_ReturnError_t CO_init(
  *
  * @param CANbaseAddress Address of the CAN module, passed to CO_CANmodule_init().
  */
-void CO_delete(int32_t CANbaseAddress);
+void CO_delete(struct can_async_descriptor *const  CANbaseAddress);
 
 
 /**

@@ -440,12 +440,6 @@
     <Compile Include="atmel_start_pins.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="can.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="can.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="CANopen.c">
       <SubType>compile</SubType>
     </Compile>
@@ -927,6 +921,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="stdio_redirect\gcc\read.c">

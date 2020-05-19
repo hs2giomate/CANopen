@@ -11,8 +11,8 @@
  *----------------------------------------------------------------------------*/
 #include "task.h"
 
-#include "can.h"
-
+//#include "can.h"
+#include "driver_init.h"
 #include "CanOpen.h"
 
 /*EEPROM driver is not the part of the demonstration code*/
@@ -55,7 +55,7 @@ void task_coldStart(void)
    CO_ReturnError_t err;
    /* CAN module address, NodeID, Bitrate */
    /* We do not use CAN registers directly, so address here is a pointer to the CAN_HandleTypeDef object. */
-   err = CO_init((uint32_t)&hcan1, 2, 250);
+   err = CO_init(&CAN_0, 2, 250);
 
    if(err != CO_ERROR_NO)
    {
