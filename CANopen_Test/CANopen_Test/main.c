@@ -34,6 +34,7 @@
 #include <atmel_start.h>
 #include "task.h"
 #include "main.h"
+
 /**
  * \brief display configuration menu.
  */
@@ -72,11 +73,12 @@ static void CAN_std_tx_callback(struct can_async_descriptor *const descr)
 	hri_can_set_CCCR_FDOE_bit(CAN_0.dev.hw);
 	hri_can_set_CCCR_BRSE_bit(CAN_0.dev.hw);
 
-	printf("  CAN Transmission done \r\n");
+	printf("  CAN STD Transmission done \r\n");
 }
 
 static void CAN_0_rx_callback(struct can_async_descriptor *const descr)
 {
+	CAN_RxFifo1MsgPendingCallback();
 	struct can_message msg;
 	uint8_t            data[64];
 	msg.data = data;

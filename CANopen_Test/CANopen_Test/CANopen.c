@@ -47,6 +47,7 @@
 
 #include "CANopen.h"
 #include "CO_OD.h"
+
  #if CO_NO_SDO_CLIENT == 1
  #include "CO_SDOmaster.h"
  #endif
@@ -195,7 +196,7 @@
 
 /******************************************************************************/
 CO_ReturnError_t CO_init(
-       struct can_async_descriptor *const                 CANbaseAddress,
+        struct can_async_descriptor   *CANbaseAddress,
         uint8_t                 nodeId,
         uint16_t                bitRate)
 {
@@ -353,7 +354,7 @@ CO_ReturnError_t CO_init(
 
 
     CO->CANmodule[0]->CANnormal = false;
-    CO_CANsetConfigurationMode(CAN1);
+    CO_CANsetConfigurationMode(CANbaseAddress);
 
     /* Verify CANopen Node-ID */
     if(nodeId<1 || nodeId>127)

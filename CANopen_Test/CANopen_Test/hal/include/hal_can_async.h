@@ -71,7 +71,7 @@ struct can_callbacks {
 /**
  * \brief CAN descriptor
  */
-struct can_async_descriptor {
+struct can_asyn_descriptor {
 	struct _can_async_device dev; /*!< CAN HPL device descriptor */
 	struct can_callbacks     cb;  /*!< CAN Interrupt Callbacks handler */
 };

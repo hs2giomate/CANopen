@@ -55,6 +55,9 @@ extern "C" {
 #endif
 
 /* Include processor header file */
+#include "driver_init.h"
+
+
 #include <stddef.h>         /* for 'NULL' */
 #include <stdint.h>         /* for 'int8_t' to 'uint64_t' */
 #include <stdbool.h>        /* for 'true', 'false' */
@@ -203,6 +206,7 @@ typedef long double             float64_t;  /**< float64_t */
 typedef char                    char_t;     /**< char_t */
 typedef unsigned char           oChar_t;    /**< oChar_t */
 typedef unsigned char           domain_t;   /**< domain_t */
+typedef	struct can_async_descriptor CAN_Handler;
 /** @} */
 
 /**
@@ -270,7 +274,7 @@ typedef struct{
  * CAN module object. It may be different in different microcontrollers.
  */
 typedef struct{
-	CAN_HandleTypeDef   *CANbaseAddress; /**< From CO_CANmodule_init() */
+	struct can_async_descriptor		*CANBaseDescriptor; /**< From CO_CANmodule_init() */
 	CO_CANrx_t          *rxArray;        /**< From CO_CANmodule_init() */
 	uint16_t             rxSize;         /**< From CO_CANmodule_init() */
 	CO_CANtx_t          *txArray;        /**< From CO_CANmodule_init() */
@@ -309,7 +313,7 @@ typedef struct{
  *
  * @param CANbaseAddress CAN module base address.
  */
-void CO_CANsetConfigurationMode(int32_t CANbaseAddress);
+void CO_CANsetConfigurationMode(struct can_async_descriptor *CANbaseAddress);
 
 
 /**
@@ -339,7 +343,7 @@ CO_ReturnError_t CO_CANsetNormalMode(CO_CANmodule_t *CANmodule);
  */
 CO_ReturnError_t CO_CANmodule_init(
 		CO_CANmodule_t         *CANmodule,
-		can_async_descriptor     *HALCanObject,
+		struct can_async_descriptor   *HALCanObject,
 		CO_CANrx_t              rxArray[],
 		uint16_t                rxSize,
 		CO_CANtx_t              txArray[],
@@ -485,6 +489,8 @@ void CO_CANinterrupt_Rx(const CO_CANmodule_t *CANmodule);
  */
 
 void CO_CANpolling_Tx(CO_CANmodule_t *CANmodule);
+
+void CAN_RxFifo1MsgPendingCallback(void);
 
 #ifdef __cplusplus
 }

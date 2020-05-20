@@ -75,6 +75,7 @@ extern "C" {
  */
 
 	#include "driver_init.h"
+	#include "hal_can_async.h"
     #include "CO_driver.h"
     #include "CO_OD.h"
     #include "CO_SDO.h"
@@ -83,6 +84,8 @@ extern "C" {
     #include "CO_SYNC.h"
     #include "CO_PDO.h"
     #include "CO_HBconsumer.h"
+
+	
 #if CO_NO_SDO_CLIENT == 1
     #include "CO_SDOmaster.h"
 #endif
